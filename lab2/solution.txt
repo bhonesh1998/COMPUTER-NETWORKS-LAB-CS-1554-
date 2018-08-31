@@ -1,0 +1,192 @@
+NAME-BHONESH CHAWLA
+BATCH-CSA
+REGNO-20164017
+CONTACT-8619127663
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+1.Is your browser running HTTP version 1.0 or 1.1? What version of HTTP is the server running?
+It is running HTTP/1.1
+-----------------------------------------------------------------------------------------------------------------------------------------------
+2.What languages (if any) does your browser indicate that it can accept to the server?
+The following languages are accepted
+en-us, en
+ie English US
+-----------------------------------------------------------------------------------------------------------------------------------------------
+3.What is the IP address of your computer? Of the gaia.cs.umass.edu server?
+My computer - 192.168.1.102
+Gaia server - 128.119.245.12
+-----------------------------------------------------------------------------------------------------------------------------------------------
+4.What is the status code returned from the server to your browser?
+status code returned is 200
+-----------------------------------------------------------------------------------------------------------------------------------------------
+5.When was the HTML file that you are retrieving last modified at the server?
+the file was last modified on
+Tue, 23 Sep 2003 05:29:00 GMT
+-----------------------------------------------------------------------------------------------------------------------------------------------
+6.How many bytes of content are being returned to your browser?
+73 bytes of content are being returned to my browser.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+7.By inspecting the raw data in the packet content window, do you see any headers within the data that are
+not displayed in the packet-listing window? If so, name one.
+No, I do not see any headers that are not displayed in the packet window.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+8. Inspect the contents of the first HTTP GET request from your browser to the server. Do you see an “IF-
+MODIFIED-SINCE” line in the HTTP GET?
+No there is no "IF-MODIFIED-SINCE" line
+-----------------------------------------------------------------------------------------------------------------------------------------------
+9. Inspect the contents of the server response. Did the server explicitly return the contents of the file? How
+can you tell?
+Yes, the server explicitly returned me the files because I recieved a 200-OK response
+-----------------------------------------------------------------------------------------------------------------------------------------------
+10. Now inspect the contents of the second HTTP GET request from your browser to the server. Do you see an
+“IF-MODIFIED-SINCE:” line in the HTTP GET? If so, what information follows the “IF-MODIFIED-SINCE:”
+header?
+Yes there is "IF-MODIFIED-SINCE" with the data 
+If-Modified-Since: Tue, 23 Sep 2003 05:35:00 GMT and a match query with a cache control
+-----------------------------------------------------------------------------------------------------------------------------------------------
+11. What is the HTTP status code and phrase returned from the server in response to this second HTTP GET?
+Did the server explicitly return the contents of the file? Explain.
+status code returned is 304
+Response Phrase : Not Modified
+No the data is not explicit because I recieved a 304-Not Modified response.
+and there is no content provided by the server.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+12. How many HTTP GET request messages did your browser send? Which packet number in the trace
+contains the GET message for the Bill or Rights?
+Only one.
+Packet 8 contains GET request for Bill of Rights which has a response in packet 14
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+13. Which packet number in the trace contains the status code and phrase associated with the response to the
+HTTP GET request?
+Packet 14 contains 200-OK response for the GET message;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+14. What is the status code and phrase in the response?
+Packet 14 contains 200-OK response for the GET message;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+15. How many data-containing TCP segments were needed to carry the single HTTP response and the text of
+the Bill of Rights?
+4 data segments were needed out of which 3 were TCP segments;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+16. How many HTTP GET request messages did your browser send? To which Internet addresses were these
+GET requests sent?
+3 GET requests were sent to the following ips
+128.119.245.12
+165.193.123.218
+134.241.6.82
+-----------------------------------------------------------------------------------------------------------------------------------------------
+17. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded
+from the two web sites in parallel? Explain.
+The images were downloaded in parallel because there are consecutive GET requests after which the images are downloaded.
+ If the download was serial, it would have been GET-OK-GET-OK version
+-----------------------------------------------------------------------------------------------------------------------------------------------
+18. What is the server’s response (status code and phrase) in response to the initial HTTP GET message from
+your browser?
+Status code -401
+Response - Authorization Required
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+19. When your browser’s sends the HTTP GET message for the second time, what new field is included in the
+HTTP GET message?
+Status code -401
+Response - Authorization Required
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+							TCP
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+1. What is the IP address and TCP port number used by the client computer (source) that is transferring the
+file to gaia.cs.umass.edu? To answer this question, it’s probably easiest to select an HTTP message and
+explore the details of the TCP packet used to carry this HTTP message, using the “details of the selected
+packet header window”.
+Source ip -192.168.1.102
+Source port - 1161
+-----------------------------------------------------------------------------------------------------------------------------------------------
+2. What is the IP address of gaia.cs.umass.edu? On what port number is it sending and receiving TCP segments
+for this connection?
+Ip address of gaia server -- 128.119.245.12
+It is sending and recieving through port 80 which is a standard for HTTP
+-----------------------------------------------------------------------------------------------------------------------------------------------
+3. What is the sequence number of the TCP SYN segment that is used to initiate the TCP connection between
+the client computer and gaia.cs.umass.edu? What is it in the segment that identifies the segment as a SYN
+segment?
+SeqNo 0 is used to initiate a TCP connection. A SYN flag which is set (1) identifies it as a SYN segment.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+4. What is the sequence number of the SYNACK segment sent by gaia.cs.umass.edu to the client computer in
+reply to the SYN? What is the value of the Acknowledgement field in the SYNACK segment? How did
+gaia.cs.umass.edu determine that value? What is it in the segment that identifies the segment as a SYNACK
+segment?
+SeqNo 0 is also used in reply to the client. Acknowledgement field is set to 1; Both SYN and ACK flags are set which identifies it as SYN ACK segment.
+The value of the acknowledgement field in the SYNACK segment is determined by adding 1 to the initial sequence number of SYN segment from the client computer 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+5. What is the sequence number of the TCP segment containing the HTTP POST command? Note that in order
+to find the POST command; you’ll need to dig into the packet content field at the bottom of the Wireshark
+window, looking for a segment with a “POST” within its DATA field.
+164041 is the seqNo for HTTP POST command.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+6. Consider the TCP segment containing the HTTP POST as the first segment in the TCP connection. What are
+the sequence numbers of the first six segments in the TCP connection (including the segment containing
+the HTTP POST)? At what time was each segment sent? When was the ACK for each segment received?
+Given the difference between when each TCP segment was sent, and when its acknowledgement was
+received, what is the RTT value for each of the six segments?
+The HTTP POST segment is considered as the first segment. Segments 1 – 6 are No. 4, 5, 7, 8, 10, 
+        and 11 in this trace respectively. The ACKs of segments 1 – 6 are No. 6, 9, 12, 14, 15, and 16
+        in this trace.
+        Segment 1 sequence number: 1 
+        Segment 2 sequence number: 566
+        Segment 3 sequence number: 2026
+        Segment 4 sequence number: 3486
+        Segment 5 sequence number: 4946 
+        Segment 6 sequence number: 6406
+		
+Below is the list of SENT time - RECEIVED time - RTT :
+Seg 1 - 0.026477 - 0.053937 - 0.02746
+Seg 2 - 0.041737 - 0.077294 - 0.035557
+Seg 3 - 0.054026 - 0.124085 - 0.070059
+Seg 4 - 0.054690 - 0.169118 - 0.11443
+Seg 5 - 0.077405 - 0.217299 - 0.13989
+Seg 6 - 0.078157 - 0.267802 - 0.18964
+
+EstimatedRTT = 0.875 * EstimatedRTT + 0.125 * SampleRTT
+-----------------------------------------------------------------------------------------------------------------------------------------------
+7. What is the length of each of the first six TCP segments?
+The length of the first TCP segment is 565 bytes. The length of each of the following five TCP segments is 1460 bytes.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+8. What is the minimum amount of available buffer space advertised at the received for the entire trace? Does
+the lack of receiver buffer space ever throttle the sender?
+The minimum amount of buffer space advertised at the received for the entire trace - 5840.
+No.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+9. Are there any retransmitted segments in the trace file? What did you check for (in the trace) in order to
+answer this question?
+No, there isn't any retransmitted segments in the trace file. I checked the sequence graph to answer this question.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+10. How much data does the receiver typically acknowledge in an ACK? Can you identify cases where the
+receiver is ACKing every other received segment.
+Data typically acknowledged by the receiver in an ACK - 1460.
+The cases in 78 & 79 show where the reciever is acking every other segment ie 1460*2=2920 bytes.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+11. What is the throughput (bytes transferred per unit time) for the TCP connection? Explain how you
+calculated this value.
+
+Time of First segment= 0.026477
+Time of Last segment= 5.455830
+ SeqNo of first segment=1
+SeqNo of last segment=164091 
+Total data transfered = 164091-1 = 164090
+Total time taken= 5.455830 - 0.026477 =5.4294 seconds.
+Hence total speed= 164090/5.4294=30.222 KB/sec
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
