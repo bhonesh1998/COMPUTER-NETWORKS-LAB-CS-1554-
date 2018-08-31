@@ -1,0 +1,233 @@
+NAME-BHONESH CHAWLA
+REGNO-20164017
+BATCH-CSE_A
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+                                                     Exercise # 1 Tracing DNS with Wireshark
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+  DNS
+  ---
+
+1. Locate the DNS query and response messages. Are then sent over UDP or TCP?
+ 
+ Answer ->  DNS query and response message are sent over UDP.
+ 
+2. What is the destination port for the DNS query message? What is the source port of DNS
+response message?
+
+Answer -> DesPort address for DNS query message is - 53 
+		  Source Port address of the response message is also 53.
+		  
+3. To what IP address is the DNS query message sent? Use ipconfig to determine the IP
+address of your local DNS server. Are these two IP addresses the same?
+
+Answer -> DestIP of DNS query message is - 128.238.29.23 and the IP address of my system local DNS server is not same as the 
+		  the above ip address (use ifconfig for linux).
+		  
+4. Examine the DNS query message. What “Type” of DNS query is it? Does the query message
+contain any “answers”?
+
+Answer -> Type of DNS query sent by DNS query message  is - A. No, the query message doesnt contain any answers.
+
+5. Examine the DNS response message. How many “answers” are provided? What does each of
+these answers contain?
+
+Answer->  2 answers are provided by the DNS response message.
+		 First message contain reply to  ---> ietf.org , of type A , whose address is 132.151.6.75
+		 Second message contain reply to ---> ietf.org , of type A , whose address is 165.246.255.51
+		 
+6. Consider the subsequent TCP SYN packet sent by your host. Does the destination IP address
+of the SYN packet correspond to any of the IP addresses provided in the DNS response message?
+
+Answer->  Yes, the DestIP of SYN packet corrospond to one of the IP address provided in DNS response message,
+		  i.e, to address 132.151.6.75 .
+		 
+7. This web page contains images. Before retrieving each image, does your host issue new DNS queries?	
+
+Answer-> No, the host doesnt issue any new DNS query . Only one query at start is  sent after that 
+		no query is sent for the image retrival.
+		
+		
+		
+-----------------------------------------------------------------------------------------------------------------------------------------------		
+		
+	Answer the following questions using dns-ethereal-trace-2 file:
+													 
+													 
+-----------------------------------------------------------------------------------------------------------------------------------------------													 
+													 
+													 
+8. What is the destination port for the DNS query message? What is the source port of DNS response message?		
+
+Answer->  DestPort for DNS query message is 53 
+		  SrcPort for DNS response message is also 53.
+		  
+9. To what IP address is the DNS query message sent? Is this the IP address of your default
+local DNS server?
+
+Answer-> DestIp of DNS query message is 128.238.29.22. No, this IP is not the same as that of my local DNS server.
+
+10. Examine the DNS query message. What “Type” of DNS query is it? Does the query message
+contain any “answers”?
+
+Answer-> Type of DNS query message is - PTR and query message doesnt contain any answers.
+
+11. Examine the DNS response message. How many “answers” are provided? What does each of
+these answers contain?
+
+Answer-> In DNS response message, 1 answer is provided and it contains reply to IP address
+		 22.29.238.128.in.addr.arpa ot type PTR.
+		
+12. Provide a screenshot.
+
+Answer-> We were told to left this question.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+				
+				Answer the following questions using dns-ethereal-trace-3 file: 
+											 
+											 
+-----------------------------------------------------------------------------------------------------------------------------------------------											 
+											 
+											 
+13. To what IP address is the DNS query message sent? Is this the IP address of your default local DNS server?	
+
+Answer-> DestIP for DNS query message is 128.238.29.22 , its different from local DNS server IP address.
+
+14. Examine the DNS query message. What “Type” of DNS query is it? Does the query message contain any “answers”?
+
+Answer-> Type of DNS query message - PTR and it doesnt contain any answers.
+
+15. Examine the DNS response message. What MIT nameservers does the response message provide? Does this response 
+message also provide the IP addresses of the MIT nameservers?
+
+Answer-> Response server provides 3 MIT namedserver.
+
+		1. bitsy.mit.edu (18.72.0.3)
+		2. strawb.mit.edu (18.71.0.151)
+		3. w20ns.mit.edu (18.70.0.160)
+		
+		Yes, this response message also provide IP addresses of MIT nameservers.
+		
+
+---------------------------------------------------------------------------------------------------------------------------------------------    Answer the following questions using dns-ethereal-trace-4 file:
+											
+											
+											
+											
+											
+17. To what IP address is the DNS query message sent? Is this the IP address of your default local DNS server? 
+If not, what does the IP address correspond to?	
+
+Answer-> DestIP for DNS query message is - 18.72.0.3, No,its diffrent from my local DNS server.
+		 IP address of my local DNS server is - 172.31.81.58.
+		
+18. Examine the DNS query message. What “Type” of DNS query is it? Does the query message contain any “answers”?
+
+Answer-> Type of DNS query message is - PTR and  it doesn't contain any answers.
+         Answers - 0.
+		
+19. Examine the DNS response message. How many “answers” are provided? What does each of these answers contain?
+
+Answer-> 1 answer is provided by DNS response server and it contain response to 
+		 www.aiit.or.kr , type A, of address 218.36.94.200  .
+	
+20. Provide a screenshot.
+
+Answer-> We were told to left this question.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+ UDP
+ ---
+ 
+ 
+ 			 Answer the following questions using udp-wireshark-trace file:
+										  
+-----------------------------------------------------------------------------------------------------------------------------------------------
+										  
+										  
+
+1. Select one UDP packet from your trace. From this packet, determine how many fields there
+are in the UDP header.Name these fields.
+
+Answer-> There are 4 fields int the UDP header and they are as follows :
+         1. Source Port
+		 2. Destination Port
+		 3. Length
+		 4. CheckSum
+		 
+
+2. By consulting the displayed information in Wireshark’s packet content field for this packet, determine the 
+length (in bytes)  of each of the UDP header fields.
+
+Answer-> The UDP header has a fixed length of 8 bytes and each of these 4 header fields is 2 bytes long.
+
+3. The value in the Length field is the length of what? Verify your claim with your captured UDP packet.
+
+Answer-> The length field specifies the number of bytes in the UDP segment (header + data). An explicit length value 
+         is needed  since the size of the data field may differ from one UDP segment to the  next. 
+ 
+
+4. What is the maximum number of bytes that can be included in a UDP payload? 
+
+Answer-> The maximum no. of byts that can be included in UDP payload is (2^16-1)
+		 minus the header bytes(which is of 8 bytes) i.e, 65535-8 = 65527 bytes.
+		 
+5. What is the largest possible source port number?
+
+Answer-> The largest possible source port number is (2^16 – 1) = 65535.
+
+
+6. What is the protocol number for UDP? Give your answer in both hexadecimal and decimal notation.  
+
+Answer-> The IP protocol number for UDP is 0x11 hexadecimal, which is 17 in decimal value.
+
+7.Examine a pair of UDP packets in which your host sends the first UDP packet and the second UDP packet is a reply to this 
+ first UDP packet.Describe the relationship between the port numbers in the two packets.
+ 
+Answer-> The source port of the UDP packet sent by the query mesage is the same as the destination port of the response packet, and  
+		 conversely the destination port of the UDP packet sent by the query is the same as the source port of the response packet.
+		 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+	
+	
+										
+										
+										
+										
+										
+										
+										
+										
+										
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
